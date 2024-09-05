@@ -1,0 +1,23 @@
+.left-block {
+  max-width: 902px;
+  width: 100%;
+  background: #000000B2;
+  height: 100%;
+  &__content {
+    padding-top: 100px;
+    margin: auto;
+    max-width: 434px;
+    &-img {
+      margin-bottom: 20px;
+    }
+    &-text {
+      font-family: Roboto;
+      color: #FFFFFF;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21px;
+      text-align: left;
+      max-width: 160px;
+    }
+  }
+}

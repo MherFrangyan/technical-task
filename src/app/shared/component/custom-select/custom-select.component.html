@@ -1,0 +1,43 @@
+<div class="custom-select">
+  <div class="custom-select__input">
+    <div class="country-code" (click)="toggleDropdown()">
+      + {{ selectedCountry.code }}
+      <span class="arrow" [class.open]="dropdownOpen">▼</span>
+    </div>
+    <input type="text" placeholder="Enter mobile number" [(ngModel)]="phoneNumber">
+  </div>
+
+  <!-- Dropdown -->
+   <div class="dropdown" *ngIf="dropdownOpen">
+    <div class="dropdown-header">
+      <span class="close" (click)="toggleDropdown()">×</span>
+    </div>
+    <ul class="dropdown-list">
+      <li
+        *ngFor="let country of countries"
+        [class.selected]="country === selectedCountry"
+        (click)="selectCountry(country)"
+      >
+        + {{ country.code }} {{ country.name }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--@if(dropdownOpen) {-->
+<!--<div class="dropdown">-->
+<!--<div class="dropdown-header">-->
+<!--<span class="close" (click)="toggleDropdown()">×</span>-->
+<!--</div>-->
+<!--<ul class="dropdown-list">-->
+<!--@for (country of countries; track country?.code) {-->
+<!--<li-->
+<!--  [class.selected]="country === selectedCountry"-->
+<!--  (click)="selectCountry(country)"-->
+<!--&gt;-->
+<!--  + {{ country.code }} {{ country.name }}-->
+<!--</li>-->
+<!--}-->
+<!--</ul>-->
+<!--</div>-->
+<!--}-->

@@ -1,0 +1,26 @@
+.page-not-found {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  app-logo-left-block {
+    flex: 1;
+  }
+  &__right-block {
+    background: #FFFFFF;
+    width: calc(100% - 902px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__content {
+    font-family: Roboto;
+    text-align: center;
+    font-weight: 300;
+    text-transform: uppercase;
+
+    span {
+      font-size: 6rem;
+      display: block;
+    }
+  }
+}
