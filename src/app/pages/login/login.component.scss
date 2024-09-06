@@ -1,3 +1,5 @@
+@import "../../shared/styles/colors";
+
 .login-page {
   display: flex;
   justify-content: space-between;
@@ -5,11 +7,237 @@
   app-logo-left-block {
     flex: 1;
   }
-  &__right-block {
-    background: #FFFFFF;
-    width: calc(100% - 902px);
+
+  &__main {
+    text-align: right;
+    flex: 1;
+    max-width: 370px;
+    transform: translateY(150px);
+    ::ng-deep .button {
+      max-width: 200px;
+    }
+  }
+
+  &__content{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    gap: 50px;
+    &-title {
+      color: $design-text-color;
+      text-transform: uppercase;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 23.44px;
+      text-align: left;
+    }
+  }
+  &__block {
+    align-items: flex-start;
+  }
+
+  .password-content {
+    margin-top: 20px;
+  }
+
+  .password-block {
+    padding-right: 20px;
+    display: flex;
     align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px -0.5px 0px 0px #00000033 inset;
+    width: 100%;
+    border: 1px solid #00000033;
+    input {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 18.75px;
+      letter-spacing: 0.4em;
+      text-align: left;
+
+      border: none;
+      border-radius: 10px 0 0 10px;
+      background: none;
+      padding: 12px 20px;
+      width: 100%;
+    }
+    .eye-icon {
+      margin-top: 5px;
+    }
+  }
+  .label {
+    display: block;
+    color: rgba(77, 77, 77, 0.5);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.06px;
+    text-align: left;
+    margin-bottom: 12px;
   }
 }
+
+//select css
+.custom-select {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 40px;
+
+  .dropdown_phone_number {
+    position: relative;
+  }
+
+  .code-block {
+    margin-right: 3px;
+  }
+
+  &__input {
+    flex: 1;
+  }
+
+  &__block {
+    display: flex;
+    align-items: stretch;
+    position: relative;
+
+    .country-code {
+      height: 38px;
+      box-shadow: 0px -0.5px 0px 0px rgba(0, 0, 0, 0.2) inset;
+      gap: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      border-radius: 10px 0 0 10px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+
+      &__number {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 16.41px;
+        text-align: left;
+      }
+    }
+
+    input {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 16.41px;
+      text-align: left;
+      color: $design-text-color;
+      width: 100%;
+      height: 38px;
+      padding: 12px 20px;
+      border-radius: 0 10px 10px 0;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      outline: none;
+      box-shadow: 0px -0.5px 0px 0px rgba(0, 0, 0, 0.2) inset;
+    }
+
+    .arrow {
+      border: 1px solid rgba(205, 205, 205, 1);
+      cursor: pointer;
+      background: rgba(227, 227, 227, 1);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        transition: transform 0.3s ease;
+      }
+    }
+
+    .arrow.open img {
+      transform: rotate(180deg);
+    }
+  }
+
+  .dropdown {
+    background: linear-gradient(180deg, #FFFFFFB2 0%, #FFFFFF4D 100%);
+    position: absolute;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0 8px 20px -3px rgba(0, 0, 0, 0.15), 0px 0px 8px rgba(0, 0, 0, 0.17), inset 0px -0.5px 0px rgba(0, 0, 0, 0.2), inset 0px -1.5px 0px rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(35px);
+    border-radius: 15px;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 100;
+
+    .dropdown-header {
+      padding: 10px;
+      text-align: right;
+
+      .close {
+        width: 18px;
+        height: 18px;
+        background: #E3E3E3;
+        border-radius: 50%;
+        text-align: center;
+        cursor: pointer;
+        display: inline-flex;
+        justify-content: center;
+        align-items: end;
+      }
+    }
+
+    .dropdown-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+
+        padding-left: 20px;
+        cursor: pointer;
+        gap: 20px;
+
+        & > * {
+          flex: 1;
+        }
+
+        p {
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 16.41px;
+          text-align: left;
+          max-width: 55px;
+          padding: 16px 0;
+          border-bottom: 1px solid $design-text-color50;
+        }
+
+        span {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 16.41px;
+          text-align: left;
+          padding: 16px 0;
+          border-bottom: 1px solid $design-text-color50;
+          color: $design-text-color;
+        }
+
+        &:hover {
+          background-color: #f0f0f0;
+        }
+
+        &.selected {
+          background-color: $design-text-color50;
+
+          & > * {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+

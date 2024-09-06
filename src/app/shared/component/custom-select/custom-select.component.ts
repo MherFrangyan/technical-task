@@ -1,41 +1,65 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {ButtonComponent} from "../custom-button/button/button.component";
+import {LoginService} from "../../service/login.service";
+import {ContactInfo, CountryList} from "../../interface/apiInterface";
 
-interface Country {
-  name: string;
-  code: number;
-}
 @Component({
   selector: 'app-custom-select',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
+  providers: [LoginService],
   templateUrl: './custom-select.component.html',
   styleUrl: './custom-select.component.scss'
 })
-export class CustomSelectComponent {
-  countries: Country[] = [
-    { name: 'Armenia', code: 374 },
-    { name: 'Andorra', code: 376 },
-    { name: 'Antigua & Barbuda', code: 1268 },
-    { name: 'Anguilla', code: 1264 },
-    { name: 'Albania', code: 355 },
-    { name: 'Angola', code: 244 },
-    // Add more countries as needed
-  ];
-  selectedCountry: Country = this.countries[0];
+export class CustomSelectComponent implements OnInit {
+  @Output()
+  phone: EventEmitter<ContactInfo> = new EventEmitter<ContactInfo>();
+
+  loginService = inject(LoginService);
+
+  countries: CountryList[] = [];
+  selectedCountry!: CountryList;
   phoneNumber: string = '';
   dropdownOpen: boolean = false;
+
+  ngOnInit() {
+    this.getCountryList()
+  }
 
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
   }
 
-  selectCountry(country: Country) {
-    this.selectedCountry = country;
+  getCountryList() {
+    this.loginService.getCountryCodeData().subscribe((res) => {
+      if (res.message === "Success") {
+        this.countries = res['result'] as CountryList[];
+        this.selectedCountry = this.countries.find(country => country.countryCode === 374)!
+        console.log(res['result']);
+      }
+    })
+  }
+
+  selectCountry(ev: Event) {
     this.dropdownOpen = false;
+    this.phoneNumber = ''
+    const target = ev.target as HTMLElement;
+    const clickedLi = target.closest('li');
+    if (clickedLi) {
+      this.selectedCountry = this.countries.find(country => country.countryCode === Number(clickedLi.getAttribute('id')))!;
+    }
+  }
+
+  phoneNumberValue(ev: any) {
+    const contactInfo = {
+      countryCode: this.selectedCountry.countryCode,
+      phoneNumber: +this.phoneNumber
+    }
+    this.phone.emit(contactInfo)
   }
 }

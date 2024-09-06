@@ -1,6 +1,88 @@
 <div class="login-page">
-  <app-logo-left-block />
-  <div class="login-page__right-block">
-    <app-custom-select />
+  <app-logo-left-block/>
+  <div class="right-block login-page__block">
+    <div class="login-page__main">
+      <div class="login-page__content">
+        <h1 class="login-page__content-title">
+          {{ 'global.loginTitle' | translate }}
+        </h1>
+
+        <!-- Select Country code and phone  -->
+          <div class="custom-select">
+
+           <div class="dropdown_phone_number">
+             <div class="custom-select__block">
+               <div class="code-block">
+                 <label class="label">Select code</label>
+                 <div class="country-code" (click)="toggleDropdown()">
+                   <p class="country-code__number">
+                     + {{ selectedCountry?.countryCode }}
+                   </p>
+                   <span class="arrow" [class.open]="dropdownOpen">
+                 <img src="assets/img/icon/icon_down.svg" alt="icon">
+                </span>
+                 </div>
+               </div>
+
+               <div class="custom-select__input">
+                 <label class="label" for="phone">Enter mobile number</label>
+                 <input
+                   mask="(000) 000 00 00"
+                   type="text"
+                   placeholder="Enter mobile number"
+                   id="phone"
+                   [(ngModel)]="phoneNumber"
+                 >
+               </div>
+             </div>
+             <!-- Dropdown -->
+             <div class="dropdown" *ngIf="dropdownOpen">
+               <div class="dropdown-header">
+                 <span class="close" (click)="toggleDropdown()">×</span>
+               </div>
+               <ul class="dropdown-list" (click)="selectCountry($event)">
+                 <li
+                   *ngFor="let country of countries"
+                   [class.selected]="country.countryCode === selectedCountry.countryCode"
+                   [id]="country.countryCode"
+                 >
+                   <p>
+                     + {{ country.countryCode }}
+                   </p>
+                   <span>
+                {{ country.countryName }}
+                </span>
+                 </li>
+               </ul>
+             </div>
+           </div>
+
+            <div class="password-content" *ngIf="showPasswordInputBlock">
+              <label for="password" class="label">Enter password</label>
+              <div class="password-block">
+                <input
+                  [type]="passwordVisible ? 'text' : 'password'"
+                  id="password"
+                  placeholder="Enter password"
+                  [(ngModel)]="password"
+                />
+                <span class="eye-icon" (click)="togglePasswordVisibility()">
+                @if(!passwordVisible) {<img src="assets/img/icon/visibility-eye.svg" alt="Eye">} @else{<img src="assets/img/icon/visibility_off-eye.svg" alt="Eye">}
+              </span>
+              </div>
+            </div>
+          </div>
+
+      </div>
+      @if(!showPasswordInputBlock) {
+        <app-button (clickBtn)="verifyUser()" [disabled]="!!phoneNumber">
+          Next
+        </app-button>
+      } @else {
+        <app-button (clickBtn)="signIn()" [disabled]="!!password">
+          {{ 'global.loginTitle' | translate }}
+        </app-button>
+      }
+    </div>
   </div>
 </div>

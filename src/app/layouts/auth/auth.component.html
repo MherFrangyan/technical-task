@@ -1,1 +1,8 @@
-<router-outlet />
+<div class="auth-page">
+  <div class="auth-page__language">
+    <p (click)="switchLanguage(inactiveLanguage1)">{{ inactiveLanguage1 | uppercase }}</p>
+    <span class="middle-line"></span>
+    <p (click)="switchLanguage(inactiveLanguage2)">{{ inactiveLanguage2 | uppercase }}</p>
+  </div>
+  <router-outlet />
+</div>

@@ -1,1 +1,4 @@
-<router-outlet />
+<ng-container>
+  @if(loaderService.isLoading()) { <app-loader /> }
+  <router-outlet />
+</ng-container>
