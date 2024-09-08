@@ -10,8 +10,8 @@ const API_URL = environment.apiUrl;
 export class LoginService {
   constructor(private http: HttpClient) { }
 
-  getCountryCodeData(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${API_URL}GetCountryCode`);
+  getCountryCodeData(): Observable<ApiResponse<any>> {
+    return this.http.get<ApiResponse<any>>(`${API_URL}GetCountryCode`);
   }
 
   checkPhoneNumber(body: PhoneNumberRequest): Observable<any> {

@@ -1,13 +1,12 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { CommonModule } from "@angular/common";
-
 import { NgxMaskDirective } from "ngx-mask";
 import { FormsModule } from "@angular/forms";
 import { SearchPipe } from "../../../../shared/pipe/search.pipe";
-import { SystemService } from "../../../../shared/service/system.service";
 import { BankAccounts } from "../../../../shared/interface/apiInterface";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { SystemDataService } from "../../../../shared/service/system-data.service";
 
 @Component({
   selector: 'app-bank-account-list',
@@ -17,7 +16,7 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
   styleUrl: './bank-account-list.component.scss'
 })
 export class BankAccountListComponent implements OnInit {
-  systemService = inject(SystemService);
+  systemDataService = inject(SystemDataService);
   translateService = inject(TranslateService);
   destroyRef = inject(DestroyRef);
   bankAccountsLists: BankAccounts[] = [];
@@ -26,8 +25,9 @@ export class BankAccountListComponent implements OnInit {
   searchAccountType: string = '';
 
   ngOnInit() {
-    this.systemService.getBankAccounts().pipe(takeUntilDestroyed(this.destroyRef)).subscribe(res => {
-      this.bankAccountsLists = res.result;
+    this.systemDataService.BankAccountsLists$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(res => {
+      if (!res) return;
+      this.bankAccountsLists = res;
     })
   }
 

@@ -5,6 +5,7 @@ import { AdditionalInfoComponent } from "./components/additional-info/additional
 import { SystemService } from "../../shared/service/system.service";
 import { TranslateModule } from "@ngx-translate/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { SystemDataService } from "../../shared/service/system-data.service";
 
 @Component({
   selector: 'app-account',
@@ -14,12 +15,15 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
   styleUrl: './account.component.scss'
 })
 export class AccountComponent implements OnInit {
-  navigateList: string[] = ['Breadcrumb1', 'Breadcrumb2','Breadcrumb3']
-  systemService = inject(SystemService)
-  destroyRef = inject(DestroyRef)
+  navigateList: string[] = ['Breadcrumb1', 'Breadcrumb2','Breadcrumb3'];
+  systemService = inject(SystemService);
+  systemDataService = inject(SystemDataService);
+  destroyRef = inject(DestroyRef);
   ngOnInit() {
-    this.systemService.getTransactions().pipe(takeUntilDestroyed(this.destroyRef)).subscribe(res => {
-      console.log('getTransactions: ', res);
+    this.systemService.getAllData().pipe(takeUntilDestroyed(this.destroyRef)).subscribe(res => {
+      this.systemDataService.AdditionalData$.next(res.additionalData?.result);
+      this.systemDataService.BankAccountsLists$.next(res.bankAccounts?.result);
+      this.systemDataService.CurrentUser$.next(res.userData?.result);
     })
   }
 }

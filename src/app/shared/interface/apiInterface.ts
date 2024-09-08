@@ -1,6 +1,6 @@
-export interface ApiResponse {
+export interface ApiResponse<T> {
   message: string;
-  result: any;
+  result: T;
 }
 
 export interface CountryList {

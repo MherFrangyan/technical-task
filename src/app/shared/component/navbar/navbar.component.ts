@@ -1,12 +1,11 @@
 import { Component, DestroyRef, ElementRef, HostListener, inject, OnInit, ViewChild } from '@angular/core';
-import { SystemService } from "../../service/system.service";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { CurrentUser } from "../../interface/apiInterface";
-import { ToastrService } from "ngx-toastr";
 import { LanguageComponent } from "../language/language.component";
 import { Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { TranslateService } from "@ngx-translate/core";
+import { SystemDataService } from "../../service/system-data.service";
 
 @Component({
   selector: 'app-navbar',
@@ -20,9 +19,8 @@ import { TranslateService } from "@ngx-translate/core";
 })
 export class NavbarComponent implements OnInit {
   @ViewChild('dropdown') dropdown?: ElementRef;
-  systemService = inject(SystemService);
+  systemDataService = inject(SystemDataService);
   destroyRef = inject(DestroyRef);
-  toastr = inject(ToastrService);
   translateService = inject(TranslateService);
   router = inject(Router);
   currentUser: CurrentUser = {firstName: '', lastName: '', passportNumber: ''};
@@ -36,10 +34,9 @@ export class NavbarComponent implements OnInit {
     { name: 'Company 2', role: 'Owner' }
   ];
   ngOnInit() {
-    this.systemService.getUserData().pipe(takeUntilDestroyed(this.destroyRef)).subscribe(res => {
-      this.currentUser = res.result;
-    }, (er) => {
-      this.toastr.error(er.error.message)
+    this.systemDataService.CurrentUser$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(res => {
+      if (!res) return;
+      this.currentUser = res;
     })
   }
 

@@ -1,9 +1,9 @@
 import {Component, DestroyRef, inject, OnInit} from '@angular/core';
 import {UpperCasePipe} from "@angular/common";
-import {SystemService} from "../../../../shared/service/system.service";
 import {AdditionalData} from "../../../../shared/interface/apiInterface";
 import {TranslateModule} from "@ngx-translate/core";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {SystemDataService} from "../../../../shared/service/system-data.service";
 
 @Component({
   selector: 'app-additional-info',
@@ -16,13 +16,14 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
   styleUrl: './additional-info.component.scss'
 })
 export class AdditionalInfoComponent implements OnInit {
-  systemService = inject(SystemService);
+  systemDataService = inject(SystemDataService);
   additionalData: AdditionalData = { description: '' };
   destroyRef = inject(DestroyRef);
 
   ngOnInit() {
-    this.systemService.getAdditionalData().pipe(takeUntilDestroyed(this.destroyRef)).subscribe(res => {
-      this.additionalData = res.result;
+    this.systemDataService.AdditionalData$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(res => {
+      if (!res) return;
+      this.additionalData = res
     })
   }
 }
