@@ -31,8 +31,12 @@
                       [placeholder]="translateService.instant('global.number_label')"
                       id="phone"
                       formControlName="phoneNumber"
+                      [validation]="true"
                       (keydown.enter)="onEnterKey('next')"
-                    >
+                    />
+                    <div *ngIf="loginForm.get('phoneNumber')?.invalid && loginForm.get('phoneNumber')?.touched">
+                      <span class="error-message">{{ "global.error_message" | translate }}</span>
+                    </div>
                   </div>
                 </div>
                 <!-- Dropdown -->
@@ -75,7 +79,7 @@
           </form>
       </div>
       @if(!showPasswordInputBlock) {
-        <app-button (clickBtn)="verifyUser()" [disabled]="!!this.loginForm.get('phoneNumber')?.value">
+        <app-button (clickBtn)="verifyUser()" [disabled]="!loginForm.get('phoneNumber')?.invalid">
           {{'global.next' | translate }}
         </app-button>
       } @else {

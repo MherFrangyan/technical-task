@@ -17,7 +17,8 @@
     "not_data": "No such data",
     "not_found_page": "Page Not Found",
     "go_home": "Go to home page",
-    "go_login": "Go to login page"
+    "go_login": "Go to login page",
+    "error_message": "The phone number format is not valid."
 
   }
 }
