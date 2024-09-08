@@ -1,0 +1,29 @@
+@import "colors";
+@import "helper";
+
+.additional {
+  border: 1px solid #4D4D4D80;
+  border-radius: 15px;
+  &__header {
+    background-color: $design-text-color50;
+    box-shadow: 0 0 30px 10px #00000014;
+    padding: 14px 30px;
+    border-radius: 14px 14px 0 0;
+
+    &-title {
+      @include text-style('h3');
+      color: white;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  &__content {
+    padding: 22px 30px;
+    color: $design-text-color;
+    &-description {
+      @include text-style('h3');
+      font-weight: 400;
+    }
+  }
+}

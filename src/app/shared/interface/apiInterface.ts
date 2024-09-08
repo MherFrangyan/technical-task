@@ -1,6 +1,6 @@
-export interface ApiResponse<T> {
+export interface ApiResponse {
   message: string;
-  [key: string]: T | string;
+  result: any;
 }
 
 export interface CountryList {
@@ -8,12 +8,24 @@ export interface CountryList {
   countryName: string;
 }
 
-export interface ContactInfo {
-  countryCode: number;
-  phoneNumber: number;
-}
-
 export interface PhoneNumberRequest {
   username: string;
   password?: string;
+}
+
+export interface CurrentUser {
+  firstName: string,
+  lastName: string,
+  passportNumber: string,
+}
+
+export interface BankAccounts {
+  accountNumber: string,
+  accountType: string,
+  currency: string,
+  balance: string,
+}
+
+export interface AdditionalData {
+  description: string;
 }

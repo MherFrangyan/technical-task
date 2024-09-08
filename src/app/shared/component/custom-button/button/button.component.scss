@@ -1,4 +1,4 @@
-@import "../../../../shared/styles/colors";
+@import "colors";
 
 .button {
   background: $button-color;
@@ -8,7 +8,7 @@
   font-weight: 700;
   line-height: 18.75px;
   text-align: center;
-  color: #FFFFFF;
+  color: white;
   width: 100%;
   padding: 12px;
   border-radius: 30px;

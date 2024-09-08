@@ -1,0 +1,134 @@
+@import "colors";
+@import "helper";
+
+.bank-details {
+  margin-bottom: 24px;
+  &__search {
+    background: #0000000D;
+    max-width: 260px;
+    margin-left: auto;
+    padding: 0 9px;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    margin-bottom: 10px;
+
+    &-input {
+      padding: 9px 5px;
+      background: transparent;
+      border: none;
+      color: $design-text-color50;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: -0.40799999237060547px;
+      text-align: left;
+      width: 100%;
+    }
+  }
+
+  &__lines {
+    border-radius: 15px;
+    border: .7px solid $services-count-color;
+    padding-left: 20px;
+
+    &__item {
+      padding-bottom: 17px;
+      padding-top: 17px;
+      border-bottom: .7px solid $services-count-color;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 65px;
+
+      > * {
+        flex: 1;
+      }
+
+      &-show_eye {
+        position: relative;
+        .eye-icon {
+          position: absolute;
+          top: -5px;
+          width: 24px;
+          height: 24px;
+          border: 0.5px solid #4D4D4DB2;
+          border-radius: 50%;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          background: white;
+          cursor: pointer;
+
+          img {
+            width: 16px;
+          }
+        }
+        .bank-details__lines__item-value{
+          display: inline-block;
+          width: 100%;
+          letter-spacing: 2px;
+        }
+        h5.bank-details__lines__item-value {
+          b {
+            letter-spacing: 5px;
+          }
+        }
+      }
+
+      &-text {
+        @include text-style('h1');
+        color: $design-text-color50;
+        margin-bottom: 4px;
+      }
+
+      &-value {
+        @include text-style('h3');
+        color: $design-text-color;
+        max-width: 114px;
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow: ellipsis;
+        &.input-value {
+          width: 90px;
+          background: transparent;
+          border: none;
+        }
+      }
+
+      &.last-item {
+        border-bottom: none;
+      }
+      &-img {
+        border-radius: 10px;
+        max-width: 88px;
+      }
+
+      &-type, &-number {
+        max-width: 130px;
+      }
+
+      &-currency {
+        max-width: 50px;
+      }
+
+      &-balance {
+        .bank-details__lines__item-value {
+          width: 55%;
+          span {
+            letter-spacing: 10px;
+            font-size: 20px;
+            transform: translateY(-5px);
+          }
+        }
+      }
+    }
+  }
+  &__empty-array{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 22px;
+    padding: 30px 30px 30px 0;
+  }
+}

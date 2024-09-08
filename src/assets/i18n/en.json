@@ -1,6 +1,23 @@
 {
   "global": {
     "loginTitle": "Log in",
-    "authSuccess": "Authorization was successful"
+    "authSuccess": "Authorization was successful",
+    "slogan_part1": "Make all transactions without leaving home",
+    "select_code": "Select code",
+    "password_label": "Enter password",
+    "number_label": "Enter mobile number",
+    "next": "Next",
+    "account_page_title": "Title",
+    "search": "Search",
+    "account_type": "Account type",
+    "account_number": "Account number",
+    "currency": "Currency",
+    "balance": "Balance",
+    "additional_info": "Additional Info",
+    "not_data": "No such data",
+    "not_found_page": "Page Not Found",
+    "go_home": "Go to home page",
+    "go_login": "Go to login page"
+
   }
 }

@@ -1,0 +1,16 @@
+@import "colors";
+
+.language{
+  display: flex;
+  align-items: flex-end;
+  .middle-line{
+    height: 16px;
+    display: inline-block;
+    width: 2px;
+    margin: 0 6px;
+    background: $design-text-color
+  }
+  p {
+    cursor: pointer;
+  }
+}

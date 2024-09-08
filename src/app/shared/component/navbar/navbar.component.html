@@ -1,0 +1,64 @@
+<header class="navbar">
+  <img src="assets/img/IDBusiness_logo.svg" alt="Logo">
+  <div class="navbar__right_block">
+    <div class="navbar__right_block-search">
+      <img src="assets/img/icon/search_icon.svg" alt="Search">
+      <input type="text" [placeholder]="translateService.instant('global.search')">
+    </div>
+    <div class="navbar__right_block-navigate">
+      <div class="user-content">
+
+        <div class="user-content__user-info">
+          <h2 class="user-content__user-name">
+            {{ currentUser.firstName }} {{ currentUser.lastName }}
+          </h2>
+          <div class="user-content__passport-with_icon">
+            <h4 class="user-content__user-passport">
+              {{ currentUser.passportNumber }}
+            </h4>
+            <span class="user-content__down-icon" (click)="toggleDropdown($event)" [class.open]="dropdownOpen" >
+              <img src="assets/img/icon/icon_down_white.svg" alt="icon">
+            </span>
+          </div>
+
+          <!-- Dropdown Content -->
+          <div class="user-content__dropdown" *ngIf="dropdownOpen" #dropdown>
+            <div class="user-content__dropdown-header">
+              <span class="close" (click)="toggleDropdown($event)">×</span>
+            </div>
+            <div *ngFor="let company of companiesList; let last = last" class="user-content__dropdown-item"
+                 [class.last]="last">
+              <div class="user-content__dropdown-item-navigate">
+                <span class="details-icon">
+                  <img src="assets/img/icon/ic_other_box.svg" alt="Details Icon">
+                </span>
+                <span class="company-name">{{ company.name }}</span>
+              </div>
+              <span class="company-role">{{ company.role }}</span>
+              <span class="under_line" *ngIf="!last"></span>
+            </div>
+          </div>
+        </div>
+
+        <img src="assets/img/user_avatar.svg" alt="Avatar" class="user-content__avatar">
+      </div>
+      <div class="service-block">
+        <p class="service-block__item service-block__notification">
+          <img src="assets/img/icon/notification_icon.svg" alt="Notification">
+          <span class="service-block__item-count">{{notificationCount}}</span>
+        </p>
+        <p class="service-block__item service-block__message">
+          <img src="assets/img/icon/messages_icon.svg" alt="Message">
+          <span class="service-block__item-count">{{messageCount}}</span>
+        </p>
+        <p class="service-block__item service-block__settings">
+          <img src="assets/img/icon/settings_icon.svg" alt="Settings">
+        </p>
+      </div>
+      <app-language/>
+    </div>
+    <p class="navbar__right_block-logOut" (click)="logOut()">
+      <img src="assets/img/icon/log-out_icon.svg" alt="LogOut">
+    </p>
+  </div>
+</header>

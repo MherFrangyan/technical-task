@@ -1,0 +1,58 @@
+<section class="bank-details">
+  <div class="bank-details__search">
+    <img src="assets/img/icon/search-gray_icon.svg" alt="Icon">
+    <input
+      [(ngModel)]="searchAccountType"
+      type="text" [placeholder]="translateService.instant('global.search')" class="bank-details__search-input">
+  </div>
+  <div class="bank-details__lines">
+    @for(item of bankAccountsLists | search : searchAccountType; track item.accountNumber; let last = $last) {
+    <div class="bank-details__lines__item" [class.last-item]="last">
+      <img src="assets/img/card_img.svg" alt="Card" class="bank-details__lines__item-img">
+      <div class="bank-details__lines__item-type">
+        <p class="bank-details__lines__item-text">{{'global.account_type' | translate}}</p>
+        <h5 class="bank-details__lines__item-value">{{ item.accountType | uppercase }}</h5>
+      </div>
+      <div class="bank-details__lines__item-number">
+        <p class="bank-details__lines__item-text">{{'global.account_number' | translate}}</p>
+        <div class="bank-details__lines__item-show_eye">
+          <input
+            *ngIf="cardNumberVisibleList.includes(item.accountNumber)"
+            readonly
+            class="bank-details__lines__item-value input-value"
+            [(ngModel)]="item.accountNumber"
+            [hiddenInput]="true" mask="000 XXX 000">
+          <h5 *ngIf="!cardNumberVisibleList.includes(item.accountNumber)" class="bank-details__lines__item-value">
+            <b>*********</b>
+          </h5>
+          <span class="eye-icon" (click)="showCardNumberValue(item.accountNumber)">
+                @if(!cardNumberVisibleList.includes(item.accountNumber)) {<img src="assets/img/icon/visibility-eye.svg" alt="Eye">} @else{<img src="assets/img/icon/visibility_off-eye.svg" alt="Eye">}
+    </span>
+  </div>
+</div>
+<div class="bank-details__lines__item-currency">
+  <p class="bank-details__lines__item-text">{{ 'global.currency' | translate }}</p>
+  <h5 class="bank-details__lines__item-value">{{ item.currency | uppercase }}</h5>
+      </div>
+      <div class="bank-details__lines__item-balance">
+        <p class="bank-details__lines__item-text">{{ 'global.balance' | translate }}</p>
+        <div class="bank-details__lines__item-show_eye">
+          <h5 class="bank-details__lines__item-value">
+            @if(balanceCountVisibleList.includes(item.balance)) {
+              {{ item.balance }}
+            } @else {
+          <span>......</span>
+          }
+        </h5>
+        <span class="eye-icon" (click)="showBalanceValue(item.balance)">
+          @if(!balanceCountVisibleList.includes(item.balance)) {<img src="assets/img/icon/visibility-eye.svg" alt="Eye">} @else{<img src="assets/img/icon/visibility_off-eye.svg" alt="Eye">}
+        </span>
+      </div>
+     </div>
+    </div>
+
+    } @empty {
+        <h5 class="bank-details__empty-array">{{ 'global.not_data' | translate }}</h5>
+    }
+  </div>
+</section>

@@ -1,0 +1,243 @@
+@import "colors";
+
+.navbar {
+  height: 55px;
+  background: $design-text-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 30px;
+  box-shadow: 0 4px 5px -2px #0000002B, 0px 8px 20px -3px #00000026;
+
+  &__right_block {
+    display: flex;
+    align-items: center;
+    gap: 41px;
+
+    &-search {
+      display: flex;
+      align-items: center;
+      padding: 0 13px;
+      border-radius: 24px;
+      border: 1px solid white;
+
+      input {
+        padding: 6px 0 6px 10px;
+        color: white;
+        border: none;
+        background: transparent;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 11.72px;
+        text-align: left;
+
+        &::placeholder {
+          color: white;
+        }
+      }
+    }
+
+    &-navigate {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .user-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        &__user-info {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 2px;
+          position: relative;
+        }
+
+        &__user-name {
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 12px;
+          text-align: right;
+          color: white;
+        }
+
+        &__passport-with_icon {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+
+        &__user-passport {
+          font-size: 10px;
+          font-weight: 400;
+          line-height: 12px;
+          text-align: right;
+          color: white;
+
+        }
+
+        &__down-icon {
+          cursor: pointer;
+          transform: translateY(-2px);
+
+          img {
+            transition: all .3s;
+          }
+
+          &.open img {
+            transform: rotate(180deg);
+          }
+        }
+
+        &__avatar {
+          border: 1px solid white;
+          border-radius: 50%;
+        }
+
+        &__dropdown {
+          background: white;
+          border: 1px solid white;
+          box-shadow: 0 0 8px 0 #0000002B,
+          0 8px 20px -3px #00000026,
+          0px -1.5px 0px 0px white40 inset,
+          0px -0.5px 0px 0px #00000033 inset;
+          border-radius: 10px;
+          position: absolute;
+          z-index: 10;
+          top: 50px;
+          width: 250px;
+          overflow: hidden;
+          padding-bottom: 10px;
+
+          &-header {
+            padding: 10px 15px;
+            span {
+              cursor: pointer;
+              margin-left: auto;
+              width: 18px;
+              height: 18px;
+              border-radius: 50%;
+              background: #CBCBCB;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+
+        &__dropdown-item {
+          position: relative;
+          height: 48px;
+          padding: 14px 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+           > * {
+            flex: 1;
+          }
+
+          &-navigate {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+
+            .details-icon {
+              border: 1px solid #00000033;
+              border-radius: 3px;
+              width: 20px;
+              height: 20px;
+              background: white;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+            }
+          }
+
+          &:hover {
+            background-color: $design-text-color50;
+
+            .company-name {
+              color: white;
+            }
+
+            .company-role {
+              color: white;
+            }
+          }
+
+          .company-name {
+            font-weight: bold;
+          }
+
+          .company-role {
+            font-size: 10px;
+            font-weight: 400;
+            line-height: 10px;
+            text-align: right;
+            color: $design-text-color;
+            max-width: 42px;
+          }
+
+          .under_line {
+            height: 1px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: $design-text-color50;
+            width: 92%;
+          }
+        }
+
+      }
+
+      .service-block {
+        display: flex;
+        align-items: center;
+        gap: 17px;
+
+        &__item {
+          position: relative;
+          cursor: pointer;
+
+          &-count {
+            position: absolute;
+            top: -5px;
+            right: -3px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: $services-count-color;
+            font-size: 8px;
+            font-weight: 700;
+            line-height: 9.38px;
+            text-align: left;
+            color: white;
+          }
+        }
+      }
+
+      ::ng-deep {
+        .language {
+          color: white;
+          font-size: 12px;
+
+          span.middle-line {
+            background: white;
+          }
+        }
+      }
+    }
+
+    &-logOut {
+      cursor: pointer;
+    }
+  }
+}

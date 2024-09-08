@@ -1,1 +1,11 @@
-<p>account works!</p>
+<article class="account">
+  <div class="account__navigate_list">
+    @for(link of navigateList; track link; let last = $last) {
+      <a href="javascript:void(0)" [class.active]="link === 'Breadcrumb3'" class="account__navigate_list-item">{{link}} </a>
+      @if(!last) {<img src="assets/img/icon/line-arrow_icon.svg" alt="Icon">}
+    }
+  </div>
+  <h1 class="account__page_title">{{ "global.account_page_title" | translate }}</h1>
+  <app-bank-account-list />
+  <app-additional-info />
+</article>

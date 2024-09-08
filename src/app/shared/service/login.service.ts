@@ -1,8 +1,8 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {environment} from "../../../assets/environment/environment";
-import {ApiResponse, CountryList, PhoneNumberRequest} from "../interface/apiInterface";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { environment } from "../../../assets/environment/environment";
+import { ApiResponse, PhoneNumberRequest } from "../interface/apiInterface";
 const API_URL = environment.apiUrl;
 
 @Injectable({providedIn: 'root'})
@@ -10,8 +10,8 @@ const API_URL = environment.apiUrl;
 export class LoginService {
   constructor(private http: HttpClient) { }
 
-  getCountryCodeData(): Observable<ApiResponse<CountryList[]>> {
-    return this.http.get<ApiResponse<CountryList[]>>(`${API_URL}GetCountryCode`);
+  getCountryCodeData(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${API_URL}GetCountryCode`);
   }
 
   checkPhoneNumber(body: PhoneNumberRequest): Observable<any> {

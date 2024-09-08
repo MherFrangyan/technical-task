@@ -1,23 +1,13 @@
-@import "../../shared/styles/colors";
+@import "colors";
 
 .auth-page {
   position: relative;
   height: 100%;
-  &__language{
-    position: absolute;
-    right: 42px;
-    top: 15px;
-    display: flex;
-    align-items: center;
-    .middle-line{
-      height: 16px;
-      display: inline-block;
-      width: 2px;
-      margin: 0 6px;
-      background: $design-text-color
-    }
-    p {
-      cursor: pointer;
+  ::ng-deep {
+    .language{
+      position: absolute;
+      right: 42px;
+      top: 15px;
     }
   }
 }

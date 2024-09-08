@@ -1,0 +1,26 @@
+@import "colors";
+@import "helper";
+
+.account {
+  padding-top: 30px;
+  max-width: 920px;
+  margin: auto;
+  &__navigate_list {
+    margin-bottom: 40px;
+    &-item{
+      @include text-style('h1');
+      color: $design-text-color;
+      cursor: pointer;
+      &.active {
+        font-weight: 700;
+      }
+    }
+    img {
+      margin: 0 12px;
+    }
+  }
+  &__page_title {
+    margin-bottom: 25px;
+    @include text-style('h2');
+  }
+}

@@ -3,7 +3,16 @@
   <div class="right-block">
     <h1 class="page-not-found__content">
       <span>404</span>
-      Page Not Found
+      {{ "global.not_found_page" | translate }}
+      @if(isLogged) {
+        <a routerLink="/" class="page-not-found__redirect">
+          {{ "global.go_home" | translate }}
+        </a>
+      } @else {
+        <a routerLink="/" class="page-not-found__redirect">
+          {{ "global.go_login" | translate }}
+        </a>
+      }
     </h1>
   </div>
 </div>

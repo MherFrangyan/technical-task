@@ -1,6 +1,23 @@
 {
   "global": {
     "loginTitle": "Մուտք գործել",
-    "authSuccess": "Մուտք գործել հաջողվեց"
+    "authSuccess": "Մուտքագրումը հաջողվեց",
+    "slogan_part1": "Կատարեք բոլոր գործարքները առանց տնից դուրս գալու",
+    "select_code": "Ընտրեք կոդը",
+    "password_label": "Մուտքագրեք գաղտնաբառը",
+    "number_label": "Մուտքագրեք հեռախոսահամարը",
+    "next": "Հաջորդը",
+    "account_page_title": "Վերնագիր",
+    "search": "Որոնում",
+    "account_type": "Հաշվի տեսակը",
+    "account_number": "Հաշվի համարը",
+    "currency": "Համակարգիչ",
+    "balance": "Բալանս",
+    "additional_info": "Լրացուցիչ տեղեկատվություն",
+    "not_data": "Նման տվյալներ չկան",
+    "not_found_page": "Էջը չի գտնվել",
+    "go_home": "Գնալ գլխավոր էջ",
+    "go_login": "Գնալ մուտքի էջ"
+
   }
 }

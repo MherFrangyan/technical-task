@@ -1,3 +1,5 @@
+@import "colors";
+
 .page-not-found {
   display: flex;
   justify-content: space-between;
@@ -5,12 +7,20 @@
   app-logo-left-block {
     flex: 1;
   }
+  &__redirect {
+    margin-top: 25px;
+    font-size: 12px;
+    display: block;
+    color: $button-color;
+    text-transform: capitalize;
+    &:hover {
+      opacity: .8;
+    }
+  }
   &__content {
-    font-family: Roboto;
     text-align: center;
     font-weight: 300;
     text-transform: uppercase;
-
     span {
       font-size: 6rem;
       display: block;
